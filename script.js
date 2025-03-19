@@ -12,16 +12,31 @@ document.addEventListener("DOMContentLoaded", () => {
     let gameActive = false;
     let boardState = ["", "", "", "", "", "", "", "", ""];
 
-    submitBtn.addEventListener("click", () => {
-        if (player1Input.value.trim() === "" || player2Input.value.trim() === "") {
-            alert("Both players must enter their names!");
-            return;
-        }
-        players = [player1Input.value, player2Input.value];
-        gameDiv.style.display = "block";
-        message.textContent = `${players[0]}, you're up!`;
-        gameActive = true;
-    });
+    // submitBtn.addEventListener("click", () => {
+    //     if (player1Input.value.trim() === "" || player2Input.value.trim() === "") {
+    //         alert("Both players must enter their names!");
+    //         return;
+    //     }
+    //     players = [player1Input.value, player2Input.value];
+    //     gameDiv.style.display = "block";
+    //     message.textContent = `${players[0]}, you're up!`;
+    //     gameActive = true;
+    // });
+	submitBtn.addEventListener("click", () => {
+    if (player1Input.value.trim() === "" || player2Input.value.trim() === "") {
+        alert("Both players must enter their names!");
+        return;
+    }
+    players = [player1Input.value, player2Input.value];
+    gameDiv.style.display = "block";
+    message.textContent = `${players[0]}, you're up!`;
+    gameActive = true;
+
+    // Instead of hiding the input fields, disable them
+    player1Input.disabled = true;
+    player2Input.disabled = true;
+    submitBtn.disabled = true;
+});
 
     boardCells.forEach((cell, index) => {
         cell.addEventListener("click", () => {
